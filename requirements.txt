@@ -1,0 +1,38 @@
+# SafeZone AI — Inference Requirements
+# Install with: pip install -r requirements.txt
+#
+# Note: pytorchvideo depends on fvcore, which may need:
+#   pip install 'git+https://github.com/facebookresearch/fvcore'
+# if not available on PyPI for your platform.
+
+# ── Core ML ──────────────────────────────────────────────────
+torch>=2.1.0
+torchvision>=0.16.0
+# torchaudio not needed — we use numpy for audio processing
+
+# ── Video (SlowFast backbone) ─────────────────────────────────
+pytorchvideo>=0.1.5
+opencv-python>=4.8.0
+
+# ── Audio processing ──────────────────────────────────────────
+librosa>=0.10.0           # audio loading from video files + ffmpeg bridge
+soundfile>=0.12.1         # fast WAV I/O (used by librosa as backend)
+numpy>=1.24.0
+
+# ── PyTorch Lightning (needed to load SlowFastLitModel) ───────
+pytorch-lightning>=2.1.0
+torchmetrics>=1.2.0
+
+# ── FastAPI server ────────────────────────────────────────────
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0   # includes websockets, httptools
+python-multipart>=0.0.9     # required for UploadFile in FastAPI
+pydantic>=2.7.0
+websockets>=12.0
+
+# ── Alerts ────────────────────────────────────────────────────
+twilio>=8.0.0
+
+# ── Utilities ─────────────────────────────────────────────────
+python-dotenv>=1.0.0        # loads .env file for Twilio credentials
+scipy>=1.11.0               # fallback audio loading

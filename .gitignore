@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.log
+
+.env
+frontend/Major_Project_SAFEZONE-main/.env
+
+logs/
+temp/
+weights/
+
+frontend/Major_Project_SAFEZONE-main/node_modules/
+frontend/Major_Project_SAFEZONE-main/dist/
+
+.DS_Store
