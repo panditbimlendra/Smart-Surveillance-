@@ -610,12 +610,17 @@ async def analyze(file: UploadFile = File(...)):
         )
 
         audio_available = waveform is not None
+        audio_detections = []
+        duration_secs = None
 
         if audio_available:
             try:
-                audio_preds = await asyncio.get_event_loop().run_in_executor(
-                    None, state.audio_inf.predict, waveform
+                audio_analysis = await asyncio.get_event_loop().run_in_executor(
+                    None, state.audio_inf.analyze, waveform
                 )
+                audio_preds = audio_analysis["scores"]
+                audio_detections = audio_analysis["detections"]
+                duration_secs = audio_analysis["duration_secs"]
             except Exception as e:
                 logger.warning(
                     "Audio inference failed for '%s': %s. Falling back to silence.",
@@ -624,6 +629,7 @@ async def analyze(file: UploadFile = File(...)):
                 )
                 audio_available = False
                 audio_preds = state.audio_inf.predict_silence()
+                audio_detections = []
         else:
             audio_preds = state.audio_inf.predict_silence()
 
@@ -646,8 +652,10 @@ async def analyze(file: UploadFile = File(...)):
 
         return AnalyzeResponse(
             filename        = file.filename,
+            duration_secs   = duration_secs,
             frames_sampled  = frames_sampled,
             audio_available = audio_available,
+            audio_detections = audio_detections,
             fusion          = FusionResult(**fusion_result),
             alert_sent      = alert_sent,
             processing_ms   = round(processing_ms, 1),

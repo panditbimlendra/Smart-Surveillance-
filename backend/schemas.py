@@ -20,6 +20,16 @@ class FusionResult(BaseModel):
     audio_preds  : Optional[Dict[str, float]] = None
 
 
+class AudioDetectionItem(BaseModel):
+    label_key  : str
+    label      : str
+    confidence : float
+    severity   : str
+    action     : str
+    start_time : float
+    end_time   : float
+
+
 # ── File Upload Endpoint  POST /analyze ──────────────────────────
 
 class AnalyzeResponse(BaseModel):
@@ -28,6 +38,7 @@ class AnalyzeResponse(BaseModel):
     duration_secs  : Optional[float] = None
     frames_sampled : int
     audio_available: bool
+    audio_detections: List[AudioDetectionItem] = Field(default_factory=list)
     fusion         : FusionResult
     alert_sent     : bool
     processing_ms  : float   # wall-clock time for the full pipeline

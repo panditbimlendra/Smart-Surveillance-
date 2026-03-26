@@ -32,6 +32,22 @@ from utils.logger import get_logger
 
 logger = get_logger("safezone.fusion")
 
+AUDIO_TIER_WEIGHTS = {
+    "normal": 0.00,
+    "footsteps": 0.20,
+    "engine_knocking": 0.25,
+    "car_horn": 0.35,
+    "crying": 0.40,
+    "tire_squeal": 0.45,
+    "siren": 0.45,
+    "alarm": 0.55,
+    "scream": 0.65,
+    "glass_break": 0.70,
+    "crash": 0.75,
+    "explosion": 0.90,
+    "gunshot": 0.95,
+}
+
 
 # ─────────────────────────────────────────────────────────────
 #  Small MLP for learned fusion
@@ -99,7 +115,7 @@ class FusionEngine:
         """
         Args:
             video_preds : {class_name: probability}  (14 UCF-Crime classes)
-            audio_preds : {class_name: probability}  (5 audio classes)
+            audio_preds : {class_name: score} for detected audio events
 
         Returns dict with keys:
             risk_score, risk_level, top_video, video_conf,
@@ -156,20 +172,12 @@ class FusionEngine:
           60% video tier score (TIER_SCORE × top_video_conf)
           40% audio tier score (audio class weight × top_audio_conf)
         """
-        audio_tier_weights = {
-            "normal"     : 0.00,
-            "scream"     : 0.65,
-            "explosion"  : 0.90,
-            "glass_break": 0.70,
-            "gunshot"    : 0.90,
-        }
-
         video_tier  = TIER_SCORE.get(
             __import__("config").CLASS_RISK_TIER.get(top_video, "NONE"), 0.0
         )
         video_score = video_tier * video_preds.get(top_video, 0.0)
 
-        audio_tier  = audio_tier_weights.get(top_audio, 0.0)
+        audio_tier  = AUDIO_TIER_WEIGHTS.get(top_audio, 0.0)
         audio_score = audio_tier * audio_preds.get(top_audio, 0.0)
 
         video_is_neutral = (
@@ -178,7 +186,7 @@ class FusionEngine:
         )
         audio_is_neutral = (
             top_audio == "normal"
-            and float(audio_preds.get("normal", 0.0)) >= 0.999
+            and float(audio_preds.get("normal", 0.0)) >= 0.95
         )
 
         # If one modality is synthetic / unavailable, let the real modality

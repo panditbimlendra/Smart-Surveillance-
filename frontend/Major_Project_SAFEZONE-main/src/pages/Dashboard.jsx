@@ -253,7 +253,11 @@ function Dashboard() {
     const fusion = analyzeResult?.fusion
     if (!fusion) return null
 
-    const isAbnormal = fusion.risk_level !== 'SAFE'
+    const audioOnlyDetection =
+      analyzeResult?.frames_sampled === 0 &&
+      String(fusion.top_audio || '').toLowerCase() !== 'normal'
+
+    const isAbnormal = fusion.risk_level !== 'SAFE' || audioOnlyDetection
     return {
       label: isAbnormal ? 'ABNORMAL ACTIVITY DETECTED' : 'NORMAL ACTIVITY',
       tone: isAbnormal
@@ -358,10 +362,18 @@ function Dashboard() {
       const result = await analyzeFile(selectedFile)
       setAnalyzeResult(result)
       await refreshOperationalData()
+      const audioOnlyDetection =
+        result.frames_sampled === 0 &&
+        String(result.fusion?.top_audio || '').toLowerCase() !== 'normal'
+      const detectionLabel =
+        audioOnlyDetection
+          ? result.fusion?.top_audio
+          : result.fusion?.risk_level
+
       setAnalyzeState(
-        result.fusion?.risk_level === 'SAFE'
+        result.fusion?.risk_level === 'SAFE' && !audioOnlyDetection
           ? 'Detection complete: normal activity'
-          : `Detection complete: ${result.fusion?.risk_level || 'abnormal activity'}`
+          : `Detection complete: ${detectionLabel || 'abnormal activity'}`
       )
     } catch (uploadError) {
       setAnalyzeState(uploadError.message || 'Analysis failed')
@@ -616,10 +628,49 @@ function Dashboard() {
                   <span className="text-slate-500">Audio available</span>
                   <span className="font-mono">{analyzeResult.audio_available ? 'yes' : 'no'}</span>
                 </div>
+                {analyzeResult.duration_secs != null && (
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500">Duration</span>
+                    <span className="font-mono">{Number(analyzeResult.duration_secs).toFixed(2)} s</span>
+                  </div>
+                )}
                 <div className="flex items-center justify-between">
                   <span className="text-slate-500">Processing time</span>
                   <span className="font-mono">{analyzeResult.processing_ms} ms</span>
                 </div>
+                {Array.isArray(analyzeResult.audio_detections) && analyzeResult.audio_detections.length > 0 && (
+                  <div className="pt-3 border-t border-slate-200">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-slate-500">Audio detections</span>
+                      <span className="font-mono">{analyzeResult.audio_detections.length}</span>
+                    </div>
+                    <div className="space-y-2">
+                      {analyzeResult.audio_detections.slice(0, 6).map((detection, index) => (
+                        <div
+                          key={`${detection.label_key}-${detection.start_time}-${index}`}
+                          className="rounded-lg border border-slate-200 bg-white px-3 py-2"
+                        >
+                          <div className="flex items-center justify-between gap-3">
+                            <span className="font-medium">{detection.label}</span>
+                            <span className="font-mono text-xs">
+                              {(Number(detection.confidence) * 100).toFixed(1)}%
+                            </span>
+                          </div>
+                          <div className="mt-1 text-xs text-slate-500 font-mono">
+                            {Number(detection.start_time).toFixed(1)}s - {Number(detection.end_time).toFixed(1)}s
+                            {' · '}
+                            {detection.severity}
+                          </div>
+                        </div>
+                      ))}
+                      {analyzeResult.audio_detections.length > 6 && (
+                        <p className="text-xs text-slate-500 font-mono">
+                          Showing first 6 detections
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>

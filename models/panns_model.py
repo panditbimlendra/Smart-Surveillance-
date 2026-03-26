@@ -6,6 +6,7 @@ import json
 import subprocess
 import tempfile
 import shutil
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Dict
@@ -478,41 +479,186 @@ class AbnormalSoundDetector:
             return None
 
 # ==================== BACKEND COMPATIBILITY ====================
-SAFEZONE_AUDIO_CLASSES = ("normal", "scream", "explosion", "glass_break", "gunshot")
+@dataclass(frozen=True)
+class AudioEventSpec:
+    label_weights: Dict[str, float]
+
+
+SAFEZONE_AUDIO_EVENT_METADATA = {
+    "scream": {
+        "label": "Scream",
+        "severity": "HIGH",
+        "action": "ALERT_GUARDS",
+    },
+    "crying": {
+        "label": "Crying",
+        "severity": "MEDIUM",
+        "action": "INVESTIGATE",
+    },
+    "gunshot": {
+        "label": "Gunshot",
+        "severity": "CRITICAL",
+        "action": "IMMEDIATE_RESPONSE",
+    },
+    "explosion": {
+        "label": "Explosion",
+        "severity": "CRITICAL",
+        "action": "IMMEDIATE_RESPONSE",
+    },
+    "glass_break": {
+        "label": "Glass breaking",
+        "severity": "HIGH",
+        "action": "ALERT_GUARDS",
+    },
+    "alarm": {
+        "label": "Alarm",
+        "severity": "HIGH",
+        "action": "ALERT_GUARDS",
+    },
+    "siren": {
+        "label": "Siren",
+        "severity": "HIGH",
+        "action": "ALERT_AUTHORITIES",
+    },
+    "car_horn": {
+        "label": "Car horn",
+        "severity": "MEDIUM",
+        "action": "NOTIFY",
+    },
+    "tire_squeal": {
+        "label": "Tire squeal",
+        "severity": "MEDIUM",
+        "action": "INVESTIGATE",
+    },
+    "crash": {
+        "label": "Crash",
+        "severity": "HIGH",
+        "action": "IMMEDIATE_RESPONSE",
+    },
+    "engine_knocking": {
+        "label": "Engine knocking",
+        "severity": "MEDIUM",
+        "action": "NOTIFY",
+    },
+    "footsteps": {
+        "label": "Footsteps",
+        "severity": "LOW",
+        "action": "NOTE",
+    },
+}
+
+
+SAFEZONE_AUDIO_CLASSES = (
+    "normal",
+    "scream",
+    "crying",
+    "gunshot",
+    "explosion",
+    "glass_break",
+    "alarm",
+    "siren",
+    "car_horn",
+    "tire_squeal",
+    "crash",
+    "engine_knocking",
+    "footsteps",
+)
+
+SAFEZONE_AUDIO_EVENT_SPECS = {
+    "scream": AudioEventSpec(
+        label_weights={
+            "Screaming": 1.0,
+            "Shout": 0.8,
+            "Yell": 0.8,
+            "Battle cry": 0.55,
+            "Children shouting": 0.35,
+        }
+    ),
+    "crying": AudioEventSpec(
+        label_weights={
+            "Crying, sobbing": 1.0,
+            "Baby cry, infant cry": 0.45,
+        }
+    ),
+    "gunshot": AudioEventSpec(
+        label_weights={
+            "Gunshot, gunfire": 1.0,
+            "Machine gun": 0.9,
+            "Cap gun": 0.2,
+        }
+    ),
+    "explosion": AudioEventSpec(
+        label_weights={
+            "Explosion": 1.0,
+            "Fireworks": 0.45,
+            "Burst, pop": 0.25,
+        }
+    ),
+    "glass_break": AudioEventSpec(
+        label_weights={
+            "Glass": 0.55,
+            "Chink, clink": 0.7,
+            "Breaking": 0.65,
+        }
+    ),
+    "alarm": AudioEventSpec(
+        label_weights={
+            "Alarm": 0.9,
+            "Car alarm": 0.95,
+            "Fire alarm": 1.0,
+            "Smoke detector, smoke alarm": 0.8,
+        }
+    ),
+    "siren": AudioEventSpec(
+        label_weights={
+            "Siren": 1.0,
+            "Civil defense siren": 1.0,
+            "Police car (siren)": 0.9,
+            "Ambulance (siren)": 0.9,
+            "Fire engine, fire truck (siren)": 0.9,
+        }
+    ),
+    "car_horn": AudioEventSpec(
+        label_weights={
+            "Vehicle horn, car horn, honking": 1.0,
+            "Air horn, truck horn": 0.85,
+            "Train horn": 0.55,
+            "Foghorn": 0.35,
+        }
+    ),
+    "tire_squeal": AudioEventSpec(
+        label_weights={
+            "Tire squeal": 1.0,
+        }
+    ),
+    "crash": AudioEventSpec(
+        label_weights={
+            "Smash, crash": 1.0,
+        }
+    ),
+    "engine_knocking": AudioEventSpec(
+        label_weights={
+            "Engine knocking": 1.0,
+        }
+    ),
+    "footsteps": AudioEventSpec(
+        label_weights={
+            "Walk, footsteps": 1.0,
+        }
+    ),
+}
 
 
 class PANNsInference:
     """
     Backend compatibility wrapper for the FastAPI inference pipeline.
     """
-
-    KEYWORD_TO_SAFEZONE = {
-        "gunshot": "gunshot",
-        "gunfire": "gunshot",
-        "machine gun": "gunshot",
-        "cap gun": "gunshot",
-        "firearm": "gunshot",
-        "bang": "gunshot",
-        "explosion": "explosion",
-        "bomb": "explosion",
-        "blast": "explosion",
-        "burst": "explosion",
-        "pop": "explosion",
-        "firecracker": "explosion",
-        "fireworks": "explosion",
-        "crack": "explosion",
-        "scream": "scream",
-        "screaming": "scream",
-        "shout": "scream",
-        "shouting": "scream",
-        "yell": "scream",
-        "cry": "scream",
-        "crying": "scream",
-        "glass": "glass_break",
-        "shatter": "glass_break",
-        "clink": "glass_break",
-        "chink": "glass_break",
-    }
+    MIN_WAVEFORM_PEAK = 1e-4
+    MIN_SEGMENT_RMS = 3e-4
+    MIN_SEGMENT_PEAK = 2e-3
+    MIN_EVENT_SCORE = 0.08
+    SEGMENT_DETECTION_THRESHOLD = 0.2
+    TOP_SEGMENTS_TO_POOL = 3
 
     def __init__(self, weights_path: str, device):
         from panns_inference import AudioTagging, labels
@@ -533,38 +679,69 @@ class PANNsInference:
 
         self.model = AudioTagging(checkpoint_path=checkpoint_path, device=self.device)
         self.labels = labels
+        self._label_to_index = {label: idx for idx, label in enumerate(self.labels)}
+        self._event_index_weights = {
+            event_name: {
+                self._label_to_index[label]: weight
+                for label, weight in spec.label_weights.items()
+                if label in self._label_to_index
+            }
+            for event_name, spec in SAFEZONE_AUDIO_EVENT_SPECS.items()
+        }
 
     def predict(self, waveform_input) -> Dict[str, float]:
+        return self._analyze_waveform(waveform_input, include_detections=False)["scores"]
+
+    def analyze(self, waveform_input) -> Dict[str, object]:
+        return self._analyze_waveform(waveform_input, include_detections=True)
+
+    def _analyze_waveform(self, waveform_input, include_detections: bool) -> Dict[str, object]:
         waveform = self._prepare_waveform(waveform_input)
         if waveform is None:
-            return self.predict_silence()
+            return {
+                "scores": self.predict_silence(),
+                "detections": [],
+                "duration_secs": 0.0,
+            }
 
         segment_samples = int(Config.SAMPLE_RATE * Config.SEGMENT_DURATION)
         step_samples = int(Config.SAMPLE_RATE * (Config.SEGMENT_DURATION - Config.SEGMENT_OVERLAP))
         step_samples = max(step_samples, 1)
 
         segment_scores = []
-        for start in range(0, max(len(waveform) - segment_samples, 0) + 1, step_samples):
-            segment = waveform[start:start + segment_samples]
-            if len(segment) < segment_samples:
-                padded = np.zeros(segment_samples, dtype=np.float32)
-                padded[:len(segment)] = segment
-                segment = padded
-            segment_scores.append(self._predict_segment(segment))
+        detections = []
+
+        for segment, start_time, end_time in self._iter_segments(waveform, segment_samples, step_samples):
+            segment_score = self._predict_segment(segment)
+            segment_scores.append(segment_score)
+            if include_detections:
+                detection = self._build_detection(segment_score, start_time, end_time)
+                if detection:
+                    detections.append(detection)
 
         if not segment_scores:
-            segment_scores.append(self._predict_segment(self._pad_waveform(waveform, segment_samples)))
+            segment = self._pad_waveform(waveform, segment_samples)
+            segment_score = self._predict_segment(segment)
+            segment_scores.append(segment_score)
+            if include_detections:
+                detection = self._build_detection(
+                    segment_score,
+                    0.0,
+                    len(waveform) / Config.SAMPLE_RATE,
+                )
+                if detection:
+                    detections.append(detection)
 
-        return self._aggregate_segment_scores(segment_scores)
+        return {
+            "scores": self._aggregate_segment_scores(segment_scores),
+            "detections": detections,
+            "duration_secs": round(len(waveform) / Config.SAMPLE_RATE, 3),
+        }
 
     def predict_silence(self) -> Dict[str, float]:
-        return {
-            "normal": 1.0,
-            "scream": 0.0,
-            "explosion": 0.0,
-            "glass_break": 0.0,
-            "gunshot": 0.0,
-        }
+        scores = {key: 0.0 for key in SAFEZONE_AUDIO_CLASSES}
+        scores["normal"] = 1.0
+        return scores
 
     def _prepare_waveform(self, waveform_input):
         if waveform_input is None:
@@ -579,6 +756,11 @@ class PANNsInference:
         if waveform.ndim != 1 or waveform.size == 0:
             return None
 
+        waveform = np.nan_to_num(waveform, nan=0.0, posinf=0.0, neginf=0.0)
+        waveform = waveform - float(np.mean(waveform))
+        if float(np.max(np.abs(waveform))) < self.MIN_WAVEFORM_PEAK:
+            return None
+
         return waveform
 
     def _pad_waveform(self, waveform: np.ndarray, target_samples: int) -> np.ndarray:
@@ -589,7 +771,27 @@ class PANNsInference:
         padded[:waveform.size] = waveform
         return padded
 
+    def _iter_segments(self, waveform: np.ndarray, segment_samples: int, step_samples: int):
+        start = 0
+        total_samples = waveform.size
+
+        while start < total_samples:
+            end = min(start + segment_samples, total_samples)
+            segment = self._pad_waveform(waveform[start:end], segment_samples)
+            yield segment, start / Config.SAMPLE_RATE, end / Config.SAMPLE_RATE
+
+            if end >= total_samples:
+                break
+            start += step_samples
+
     def _predict_segment(self, waveform: np.ndarray) -> Dict[str, float]:
+        peak = float(np.max(np.abs(waveform)))
+        rms = float(np.sqrt(np.mean(np.square(waveform, dtype=np.float32))))
+
+        if peak < self.MIN_SEGMENT_PEAK or rms < self.MIN_SEGMENT_RMS:
+            return self.predict_silence()
+
+        waveform = waveform / max(peak, 1e-8)
         audio_tensor = torch.from_numpy(waveform.reshape(1, -1)).float()
         with torch.no_grad():
             clipwise_output, _ = self.model.inference(audio_tensor)
@@ -599,49 +801,78 @@ class PANNsInference:
         else:
             probs = np.asarray(clipwise_output[0] if np.ndim(clipwise_output) > 1 else clipwise_output)
 
-        return self._map_to_safezone_classes(probs)
+        return self._map_to_audio_events(probs)
 
     def _aggregate_segment_scores(self, segment_scores) -> Dict[str, float]:
-        scores = {key: 0.0 for key in SAFEZONE_AUDIO_CLASSES}
+        pooled_scores = {key: 0.0 for key in SAFEZONE_AUDIO_CLASSES if key != "normal"}
 
-        for segment_score in segment_scores:
-            for key, value in segment_score.items():
-                scores[key] = max(scores[key], float(value))
-
-        anomaly_max = max(scores["scream"], scores["explosion"], scores["glass_break"], scores["gunshot"])
-        scores["normal"] = float(np.clip(1.0 - anomaly_max, 0.0, 1.0))
-
-        total = sum(scores.values())
-        if total > 0:
-            scores = {key: value / total for key, value in scores.items()}
-
-        return scores
-
-    def _map_to_safezone_classes(self, probs: np.ndarray) -> Dict[str, float]:
-        scores = {key: 0.0 for key in SAFEZONE_AUDIO_CLASSES}
-
-        for idx, prob in enumerate(probs):
-            if idx >= len(self.labels):
+        for key in pooled_scores:
+            values = np.array([float(score.get(key, 0.0)) for score in segment_scores], dtype=np.float32)
+            if values.size == 0:
                 continue
-            mapped = self._map_label_to_safezone(self.labels[idx])
-            if mapped:
-                scores[mapped] = max(scores[mapped], float(prob))
 
-        anomaly_max = max(scores["scream"], scores["explosion"], scores["glass_break"], scores["gunshot"])
-        scores["normal"] = float(np.clip(1.0 - anomaly_max, 0.0, 1.0))
+            top_k = np.sort(values)[-min(self.TOP_SEGMENTS_TO_POOL, values.size):]
+            pooled = 0.65 * float(top_k[-1]) + 0.35 * float(np.mean(top_k))
+            pooled_scores[key] = 0.0 if pooled < self.MIN_EVENT_SCORE else float(np.clip(pooled, 0.0, 1.0))
 
-        total = sum(scores.values())
-        if total > 0:
-            scores = {key: value / total for key, value in scores.items()}
+        anomaly_max = max(pooled_scores.values(), default=0.0)
+        return {
+            "normal": float(np.clip(1.0 - anomaly_max, 0.0, 1.0)),
+            **pooled_scores,
+        }
 
-        return scores
+    def _map_to_audio_events(self, probs: np.ndarray) -> Dict[str, float]:
+        scores = {key: 0.0 for key in SAFEZONE_AUDIO_CLASSES if key != "normal"}
 
-    def _map_label_to_safezone(self, label: str):
-        label_lower = label.lower()
-        for keyword, target in self.KEYWORD_TO_SAFEZONE.items():
-            if keyword in label_lower:
-                return target
-        return None
+        for event_name, index_weights in self._event_index_weights.items():
+            if not index_weights:
+                continue
+
+            weighted_scores = sorted(
+                float(probs[idx]) * weight
+                for idx, weight in index_weights.items()
+            )
+            if not weighted_scores:
+                continue
+
+            top_scores = np.array(weighted_scores[-min(3, len(weighted_scores)):], dtype=np.float32)
+            score = 0.75 * float(top_scores[-1]) + 0.25 * float(np.mean(top_scores))
+            scores[event_name] = float(np.clip(score, 0.0, 1.0))
+
+        anomaly_max = max(scores.values(), default=0.0)
+        return {
+            "normal": float(np.clip(1.0 - anomaly_max, 0.0, 1.0)),
+            **scores,
+        }
+
+    def _build_detection(self, segment_score: Dict[str, float], start_time: float, end_time: float):
+        abnormal_scores = {
+            key: float(value)
+            for key, value in segment_score.items()
+            if key != "normal" and float(value) >= self.SEGMENT_DETECTION_THRESHOLD
+        }
+        if not abnormal_scores:
+            return None
+
+        label_key = max(abnormal_scores, key=abnormal_scores.get)
+        meta = SAFEZONE_AUDIO_EVENT_METADATA.get(
+            label_key,
+            {
+                "label": label_key.replace("_", " ").title(),
+                "severity": "LOW",
+                "action": "NOTE",
+            },
+        )
+
+        return {
+            "label_key": label_key,
+            "label": meta["label"],
+            "confidence": round(abnormal_scores[label_key], 4),
+            "severity": meta["severity"],
+            "action": meta["action"],
+            "start_time": round(float(start_time), 3),
+            "end_time": round(float(end_time), 3),
+        }
 
 
 class PANNsLitModel(torch.nn.Module):
