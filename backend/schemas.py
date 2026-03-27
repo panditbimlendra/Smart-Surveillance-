@@ -71,6 +71,12 @@ class StreamStartRequest(BaseModel):
     camera_id  : str  = Field("cam1", example="cam1")
 
 
+class WebcamStartRequest(BaseModel):
+    """Request to start laptop/local webcam streaming"""
+    device_id  : int  = Field(0, example=0)  # 0 = default webcam, 1 = secondary, etc.
+    camera_id  : str  = Field("laptop_webcam", example="laptop_webcam")
+
+
 class StreamStartResponse(BaseModel):
     status    : str
     rtsp_url  : str
@@ -92,6 +98,8 @@ class StreamStatusResponse(BaseModel):
     temporal_summary: Dict[str, Any]
     last_result     : Optional[FusionResult] = None
     last_alert_ts   : Optional[float] = None
+    abnormal_frame_ts: Optional[float] = None  # Timestamp when abnormal activity frame was captured
+    abnormal_frame_url: Optional[str] = None   # URL to fetch the abnormal activity frame
     error_message   : Optional[str] = None
 
 

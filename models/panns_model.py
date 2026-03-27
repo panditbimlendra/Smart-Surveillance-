@@ -29,15 +29,15 @@ class Config:
     
     # Abnormal sound classes with severity levels
     ABNORMAL_CLASSES = {
-        "Gunshot": {"severity": "CRITICAL", "action": "IMMEDIATE_RESPONSE"},
-        "Explosion": {"severity": "CRITICAL", "action": "IMMEDIATE_RESPONSE"},
-        "Scream": {"severity": "HIGH", "action": "ALERT_GUARDS"},
+        "Gunshot": {"severity": "HIGH", "action": "IMMEDIATE_RESPONSE"},
+        "Explosion": {"severity": "HIGH", "action": "IMMEDIATE_RESPONSE"},
+        "Scream": {"severity": "MEDIUM", "action": "ALERT_GUARDS"},
         "Glass breaking": {"severity": "HIGH", "action": "ALERT_GUARDS"},
-        "Shout": {"severity": "MEDIUM", "action": "INVESTIGATE"},
-        "Crying": {"severity": "MEDIUM", "action": "INVESTIGATE"},
-        "Car horn": {"severity": "MEDIUM", "action": "NOTIFY"},
-        "Siren": {"severity": "HIGH", "action": "ALERT_AUTHORITIES"},
-        "Alarm": {"severity": "HIGH", "action": "ALERT_GUARDS"},
+        "Shout": {"severity": "MEDIUM", "action": "ALERT_GUARDS"},
+        "Crying": {"severity": "MEDIUM", "action": "ALERT_GUARDS"},
+        "Car horn": {"severity": "LOW", "action": "NOTIFY"},
+        "Siren": {"severity": "LOW", "action": "ALERT_AUTHORITIES"},
+        "Alarm": {"severity": "LOW", "action": "ALERT_GUARDS"},
         "Tire squeal": {"severity": "MEDIUM", "action": "INVESTIGATE"},
         "Engine knocking": {"severity": "MEDIUM", "action": "NOTIFY"},
         "Crash": {"severity": "HIGH", "action": "IMMEDIATE_RESPONSE"},
@@ -47,7 +47,7 @@ class Config:
         "Machine humming": {"severity": "LOW", "action": "NOTE"},
 
          # Animal sounds
-        "Dog bark": {"severity": "MEDIUM", "action": "INVESTIGATE"},
+        "Dog bark": {"severity": "LOW", "action": "NOTE"},
         "Cat meow": {"severity": "LOW", "action": "NOTE"},
         "Bird chirp": {"severity": "LOW", "action": "NOTE"},
         "Rooster crow": {"severity": "LOW", "action": "NOTE"},
@@ -57,8 +57,8 @@ class Config:
         "Sheep bleat": {"severity": "LOW", "action": "NOTE"},
         "Insect buzz": {"severity": "LOW", "action": "NOTE"},
         "Frog croak": {"severity": "LOW", "action": "NOTE"},
-        "Wolf howl": {"severity": "HIGH", "action": "ALERT_GUARDS"},
-        "Monkey screech": {"severity": "MEDIUM", "action": "INVESTIGATE"}
+        "Wolf howl": {"severity": "MEDIUM", "action": "ALERT_GUARDS"},
+        "Monkey screech": {"severity": "MEDIUM", "action": "ALERT_GUARDS"}
     }
     
     # Expanded mapping for better coverage

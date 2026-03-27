@@ -25,6 +25,17 @@ except ImportError:
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+# ─────────────────────────────────────────────────────────────────
+#  CCTV CONFIGURATION
+# ─────────────────────────────────────────────────────────────────
+
+DEFAULT_CCTV_RTSP_URL = os.getenv(
+    "CCTV_RTSP_URL",
+    "rtsp://admin:password@192.168.1.100:554/Streaming/Channels/101"
+)
+DEFAULT_CAMERA_ID = os.getenv("CAMERA_ID", "main_lobby")
+DEFAULT_CAMERA_LOCATION = os.getenv("CAMERA_LOCATION", "Entrance")
+
 
 # ─────────────────────────────────────────────────────────────────
 #  UCF-Crime class registry
@@ -203,14 +214,24 @@ class TemporalConfig:
 
 @dataclass
 class AlertConfig:
-    twilio_sid    : str  = os.getenv("TWILIO_SID",   "")
-    twilio_token  : str  = os.getenv("TWILIO_TOKEN", "")
-    twilio_from   : str  = os.getenv("TWILIO_FROM",  "")
-    alert_to      : str  = os.getenv("ALERT_TO",     "")
-    cooldown_secs : int  = 30
-    enable_sms    : bool = True
-    camera_label  : str  = "SafeZone Camera 1"
-    audit_log     : str  = "logs/audit.jsonl"
+    # ── SMS Alerts (Twilio) ──────────────
+    twilio_enabled : bool = os.getenv("TWILIO_ENABLED", "true").lower() == "true"
+    twilio_sid     : str  = os.getenv("TWILIO_SID",   "")
+    twilio_token   : str  = os.getenv("TWILIO_TOKEN", "")
+    twilio_from    : str  = os.getenv("TWILIO_FROM",  "")
+    alert_phone    : str  = os.getenv("ALERT_TO",     "+919803285005")
+    
+    # ── Email Alerts ─────────────────────
+    email_enabled  : bool = os.getenv("EMAIL_ENABLED", "true").lower() == "true"
+    email_from     : str  = os.getenv("EMAIL_FROM",     "")
+    email_password : str  = os.getenv("EMAIL_PASSWORD", "")
+    alert_email    : str  = os.getenv("ALERT_EMAIL",    "panditbimlendra10@gmail.com")
+    
+    # ── General Settings ─────────────────
+    cooldown_secs  : int  = int(os.getenv("ALERT_COOLDOWN", "30"))
+    enable_sms     : bool = twilio_enabled  # legacy support
+    camera_label   : str  = "SafeZone Camera 1"
+    audit_log      : str  = "logs/audit.jsonl"
 
 
 # ─────────────────────────────────────────────────────────────────

@@ -83,6 +83,7 @@ from backend.schemas import (
     StreamStartResponse,
     StreamStatusResponse,
     StreamStopResponse,
+    WebcamStartRequest,
     WsResultMessage,
 )
 
@@ -208,6 +209,8 @@ class CCTVStreamer:
         self._last_alert_ts    : Optional[float] = None
         self._last_error       : Optional[str] = None
         self._last_frame_jpeg  : Optional[bytes] = None
+        self._abnormal_frame_jpeg: Optional[bytes] = None  # Frame when abnormal activity detected
+        self._abnormal_frame_ts   : Optional[float] = None  # Timestamp of abnormal frame
         self._temporal         = TemporalEngine()
         self._started_event    = threading.Event()
 
@@ -254,20 +257,26 @@ class CCTVStreamer:
         with self._lock:
             last = self._last_result.copy() if self._last_result else None
         return {
-            "streaming"        : self.is_running,
-            "rtsp_url"         : self._url,
-            "camera_id"        : self._camera_id,
-            "frames_processed" : self._frames_processed,
-            "clips_processed"  : self._clips_processed,
-            "temporal_summary" : self._temporal.summary(),
-            "last_result"      : last,
-            "last_alert_ts"    : self._last_alert_ts,
-            "error_message"    : self._last_error,
+            "streaming"         : self.is_running,
+            "rtsp_url"          : self._url,
+            "camera_id"         : self._camera_id,
+            "frames_processed"  : self._frames_processed,
+            "clips_processed"   : self._clips_processed,
+            "temporal_summary"  : self._temporal.summary(),
+            "last_result"       : last,
+            "last_alert_ts"     : self._last_alert_ts,
+            "abnormal_frame_ts" : self._abnormal_frame_ts,
+            "error_message"     : self._last_error,
         }
 
     def get_latest_frame(self) -> Optional[bytes]:
         with self._lock:
             return bytes(self._last_frame_jpeg) if self._last_frame_jpeg else None
+
+    def get_abnormal_frame(self) -> Optional[bytes]:
+        """Return the frame that triggered abnormal activity detection."""
+        with self._lock:
+            return bytes(self._abnormal_frame_jpeg) if self._abnormal_frame_jpeg else None
 
     # ── Main loop (runs in background thread) ─────────────────
 
@@ -342,6 +351,22 @@ class CCTVStreamer:
             if alert_sent:
                 self._last_alert_ts = time.time()
 
+            # Capture frame if abnormal activity detected
+            if fusion_result["risk_level"] in {"WARNING", "DANGER"}:
+                # Use the middle frame from the clip for better representation
+                mid_idx = len(frames_np) // 2
+                frame = (frames_np[mid_idx] * 255).astype(np.uint8)  # Denormalize
+                if frame.ndim == 3 and frame.shape[2] == 3:
+                    # Convert RGB back to BGR for OpenCV JPEG encoding
+                    frame_bgr = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
+                else:
+                    frame_bgr = frame
+                success, jpeg = cv2.imencode(".jpg", frame_bgr, [cv2.IMWRITE_JPEG_QUALITY, 85])
+                if success:
+                    with self._lock:
+                        self._abnormal_frame_jpeg = jpeg.tobytes()
+                        self._abnormal_frame_ts = time.time()
+
             # Store for status endpoint
             with self._lock:
                 self._last_result = fusion_result.copy()
@@ -363,16 +388,230 @@ class CCTVStreamer:
 
 
 # ══════════════════════════════════════════════════════════════════
+#  WEBCAM STREAMER  (laptop/device webcam for abnormal activity detection)
+# ══════════════════════════════════════════════════════════════════
+
+class WebcamStreamer:
+    """
+    Background thread that reads from laptop/device webcam (via cv2.VideoCapture),
+    runs inference, and fires alerts.
+
+    Similar to CCTVStreamer but optimized for built-in webcams.
+    Audio note: Webcams typically don't have audio, so we use video-only inference.
+    """
+
+    def __init__(
+        self,
+        device_id     : int,
+        camera_id     : str,
+        video_inf     : 'VideoInference',
+        audio_inf     : PANNsInference,
+        fusion        : FusionEngine,
+        alerts        : AlertSystem,
+    ):
+        self._device_id     = device_id
+        self._camera_id     = camera_id
+        self._video_inf     = video_inf
+        self._audio_inf     = audio_inf
+        self._fusion        = fusion
+        self._alerts        = alerts
+
+        self._stop_event    = threading.Event()
+        self._thread        : Optional[threading.Thread] = None
+        self._lock          = threading.Lock()
+
+        # Status
+        self._frames_processed = 0
+        self._clips_processed  = 0
+        self._last_result      : Optional[dict] = None
+        self._last_alert_ts    : Optional[float] = None
+        self._last_error       : Optional[str] = None
+        self._last_frame_jpeg  : Optional[bytes] = None
+        self._abnormal_frame_jpeg: Optional[bytes] = None
+        self._abnormal_frame_ts   : Optional[float] = None
+        self._temporal         = TemporalEngine()
+        self._started_event    = threading.Event()
+
+    # ── Lifecycle ─────────────────────────────────────────────
+
+    def start(self) -> None:
+        if self._thread and self._thread.is_alive():
+            raise RuntimeError("Webcam stream already running. Stop it first.")
+        self._stop_event.clear()
+        self._started_event.clear()
+        self._temporal.reset()
+        self._frames_processed = 0
+        self._clips_processed  = 0
+        self._last_result      = None
+        self._last_alert_ts    = None
+        self._last_error       = None
+        self._last_frame_jpeg  = None
+        self._thread = threading.Thread(
+            target  = self._run,
+            name    = f"webcam-{self._camera_id}",
+            daemon  = True,
+        )
+        self._thread.start()
+        self._started_event.wait(timeout=3.0)
+        if self._last_error:
+            raise RuntimeError(self._last_error)
+        if not self.is_running:
+            raise RuntimeError("Webcam did not open. Check permissions or if webcam is in use by another application.")
+        logger.info("WebcamStreamer started — device=%d  camera=%s", self._device_id, self._camera_id)
+
+    def stop(self) -> None:
+        self._stop_event.set()
+        if self._thread:
+            self._thread.join(timeout=10)
+        logger.info("WebcamStreamer stopped — camera=%s", self._camera_id)
+
+    @property
+    def is_running(self) -> bool:
+        return self._thread is not None and self._thread.is_alive()
+
+    # ── Status ────────────────────────────────────────────────
+
+    def get_status(self) -> dict:
+        with self._lock:
+            last = self._last_result.copy() if self._last_result else None
+        return {
+            "streaming"         : self.is_running,
+            "device_id"         : self._device_id,
+            "camera_id"         : self._camera_id,
+            "frames_processed"  : self._frames_processed,
+            "clips_processed"   : self._clips_processed,
+            "temporal_summary"  : self._temporal.summary(),
+            "last_result"       : last,
+            "last_alert_ts"     : self._last_alert_ts,
+            "abnormal_frame_ts" : self._abnormal_frame_ts,
+            "error_message"     : self._last_error,
+        }
+
+    def get_latest_frame(self) -> Optional[bytes]:
+        with self._lock:
+            return bytes(self._last_frame_jpeg) if self._last_frame_jpeg else None
+
+    def get_abnormal_frame(self) -> Optional[bytes]:
+        """Return the frame that triggered abnormal activity detection."""
+        with self._lock:
+            return bytes(self._abnormal_frame_jpeg) if self._abnormal_frame_jpeg else None
+
+    # ── Main loop (runs in background thread) ─────────────────
+
+    def _run(self) -> None:
+        cap = cv2.VideoCapture(self._device_id)
+
+        if not cap.isOpened():
+            self._last_error = f"Could not open webcam device {self._device_id}. Ensure no other app is using it."
+            self._started_event.set()
+            logger.error("WebcamStreamer: cannot open device %d", self._device_id)
+            return
+
+        self._last_error = None
+        self._started_event.set()
+
+        frame_buf = FrameBuffer(
+            clip_length = VCFG.frames,
+            stride      = VCFG.frames // 4,
+            frame_size  = VCFG.frame_size,
+        )
+
+        logger.info("WebcamStreamer: webcam opened — device=%d", self._device_id)
+
+        while not self._stop_event.is_set():
+            ret, frame = cap.read()
+            if not ret:
+                self._last_error = "Webcam stream interrupted or disconnected."
+                logger.warning("WebcamStreamer: frame read failed — retrying in 1s")
+                time.sleep(1.0)
+                continue
+
+            self._last_error = None
+            ok, encoded = cv2.imencode(".jpg", frame, [int(cv2.IMWRITE_JPEG_QUALITY), 80])
+            if ok:
+                with self._lock:
+                    self._last_frame_jpeg = encoded.tobytes()
+            frame_buf.add(frame)
+            self._frames_processed += 1
+
+            if frame_buf.is_ready():
+                self._process_clip(frame_buf.get_clip())
+
+        cap.release()
+        logger.info("WebcamStreamer: webcam released — device=%d", self._device_id)
+
+    def _process_clip(self, frames_np: np.ndarray) -> None:
+        """Run the full inference pipeline on one clip."""
+        try:
+            # Video inference
+            video_preds = self._video_inf.predict(frames_np)
+
+            # Audio: Webcam mode is video-only — return neutral audio
+            audio_preds = self._audio_inf.predict_silence()
+
+            # Fuse video + audio
+            fusion_result = self._fusion.fuse(video_preds, audio_preds)
+
+            # Temporal decision engine
+            self._temporal.update(fusion_result["risk_score"])
+            is_anomaly, confidence = self._temporal.decision()
+
+            if is_anomaly:
+                fusion_result["should_alert"] = True
+                if fusion_result["risk_level"] == "SAFE":
+                    fusion_result["risk_level"] = "WARNING"
+
+            # Fire alert
+            alert_sent = self._alerts.maybe_alert(fusion_result)
+            if alert_sent:
+                self._last_alert_ts = time.time()
+
+            # Capture frame if abnormal activity detected
+            if fusion_result["risk_level"] in {"WARNING", "DANGER"}:
+                mid_idx = len(frames_np) // 2
+                frame = (frames_np[mid_idx] * 255).astype(np.uint8)
+                if frame.ndim == 3 and frame.shape[2] == 3:
+                    frame_bgr = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
+                else:
+                    frame_bgr = frame
+                success, jpeg = cv2.imencode(".jpg", frame_bgr, [cv2.IMWRITE_JPEG_QUALITY, 85])
+                if success:
+                    with self._lock:
+                        self._abnormal_frame_jpeg = jpeg.tobytes()
+                        self._abnormal_frame_ts = time.time()
+
+            # Store for status endpoint
+            with self._lock:
+                self._last_result = fusion_result.copy()
+
+            self._clips_processed += 1
+
+            logger.debug(
+                "Webcam clip %d  risk=%s (%.3f)  top=%s  alert=%s",
+                self._clips_processed,
+                fusion_result["risk_level"],
+                fusion_result["risk_score"],
+                fusion_result["top_video"],
+                alert_sent,
+            )
+
+        except Exception as e:
+            self._last_error = str(e)
+            logger.error("WebcamStreamer._process_clip error: %s", e, exc_info=True)
+
+
+# ══════════════════════════════════════════════════════════════════
 #  APP STATE  (holds models + stream — lives for the app lifetime)
 # ══════════════════════════════════════════════════════════════════
 
 class AppState:
     """Singleton holding all loaded models and the CCTV streamer."""
-    video_inf  : VideoInference
-    audio_inf  : PANNsInference
-    fusion     : FusionEngine
-    alerts     : AlertSystem
-    streamer   : Optional[CCTVStreamer] = None
+    video_inf      : VideoInference
+    audio_inf      : PANNsInference
+    fusion         : FusionEngine
+    alerts         : AlertSystem
+    streamer       : Optional[CCTVStreamer] = None
+    webcam_streamer: Optional['WebcamStreamer'] = None
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -398,6 +637,8 @@ async def lifespan(app: FastAPI):
     logger.info("SafeZone AI — shutdown")
     if state.streamer and state.streamer.is_running:
         state.streamer.stop()
+    if state.webcam_streamer and state.webcam_streamer.is_running:
+        state.webcam_streamer.stop()
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -689,16 +930,22 @@ async def predict(request: PredictRequest):
 @app.post("/stream/start", response_model=StreamStartResponse, tags=["CCTV Stream"])
 async def stream_start(request: StreamStartRequest):
     """
-    Connect to a live RTSP camera (or webcam) and start continuous detection.
+    Connect to a live RTSP CCTV camera and start continuous detection.
 
-    - rtsp_url  : RTSP URL  e.g. "rtsp://192.168.1.100:554/stream"
-                  OR integer string "0" / "1" for webcam index.
-    - camera_id : label used in alerts and audit log (default "cam1")
+    - rtsp_url  : RTSP URL  e.g. "rtsp://admin:password@192.168.1.100:554/Streaming/Channels/101"
+    - camera_id : label used in alerts and audit log (default "main_lobby")
 
     Uses a background thread — this endpoint returns immediately.
     Poll GET /stream/status for results.
     """
     state = _state(app)
+
+    # Validate RTSP URL format (no webcam fallback)
+    if not request.rtsp_url.startswith("rtsp://"):
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid URL format. Must start with 'rtsp://'. Example: rtsp://admin:password@192.168.1.100:554/stream",
+        )
 
     if state.streamer and state.streamer.is_running:
         raise HTTPException(
@@ -778,16 +1025,22 @@ async def stream_status():
     if s["last_result"]:
         last_fusion = FusionResult(**s["last_result"])
 
+    abnormal_frame_url = None
+    if s["abnormal_frame_ts"]:
+        abnormal_frame_url = f"/stream/abnormal-frame?ts={s['abnormal_frame_ts']}"
+
     return StreamStatusResponse(
-        streaming        = s["streaming"],
-        rtsp_url         = s["rtsp_url"],
-        camera_id        = s["camera_id"],
-        frames_processed = s["frames_processed"],
-        clips_processed  = s["clips_processed"],
-        temporal_summary = s["temporal_summary"],
-        last_result      = last_fusion,
-        last_alert_ts    = s["last_alert_ts"],
-        error_message    = s["error_message"],
+        streaming           = s["streaming"],
+        rtsp_url            = s["rtsp_url"],
+        camera_id           = s["camera_id"],
+        frames_processed    = s["frames_processed"],
+        clips_processed     = s["clips_processed"],
+        temporal_summary    = s["temporal_summary"],
+        last_result         = last_fusion,
+        last_alert_ts       = s["last_alert_ts"],
+        abnormal_frame_ts   = s["abnormal_frame_ts"],
+        abnormal_frame_url  = abnormal_frame_url,
+        error_message       = s["error_message"],
     )
 
 
@@ -806,6 +1059,147 @@ async def stream_frame():
         raise HTTPException(status_code=404, detail="Waiting for the first camera frame.")
 
     return Response(content=frame_jpeg, media_type="image/jpeg")
+
+
+@app.get("/stream/abnormal-frame", tags=["CCTV Stream"])
+async def stream_abnormal_frame():
+    """
+    Return the frame that triggered abnormal activity detection.
+    This is the frame where WARNING or DANGER risk level was detected.
+    """
+    state = _state(app)
+
+    if not state.streamer:
+        raise HTTPException(status_code=404, detail="No active stream.")
+
+    abnormal_frame_jpeg = state.streamer.get_abnormal_frame()
+    if not abnormal_frame_jpeg:
+        raise HTTPException(status_code=404, detail="No abnormal activity frame captured yet.")
+
+    return Response(content=abnormal_frame_jpeg, media_type="image/jpeg")
+
+
+# ══════════════════════════════════════════════════════════════════
+#  WEBCAM ENDPOINTS  — for laptop/device built-in camera
+# ══════════════════════════════════════════════════════════════════
+
+@app.post("/stream/start-webcam", response_model=StreamStartResponse, tags=["Webcam Stream"])
+async def webcam_start(request: WebcamStartRequest):
+    """
+    Start streaming from laptop/device webcam for abnormal activity detection.
+
+    - device_id  : Camera device index (0 = default/first camera, 1 = secondary, etc.)
+    - camera_id  : Label for alerts and logs (default "laptop_webcam")
+
+    Uses a background thread — this endpoint returns immediately.
+    Poll GET /stream/webcam-status for results.
+    """
+    state = _state(app)
+
+    if state.webcam_streamer and state.webcam_streamer.is_running:
+        raise HTTPException(
+            status_code=409,
+            detail="A webcam stream is already running. Stop it first with POST /stream/stop-webcam.",
+        )
+
+    state.webcam_streamer = WebcamStreamer(
+        device_id = request.device_id,
+        camera_id = request.camera_id,
+        video_inf = state.video_inf,
+        audio_inf = state.audio_inf,
+        fusion    = state.fusion,
+        alerts    = state.alerts,
+    )
+
+    try:
+        state.webcam_streamer.start()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to start webcam: {e}")
+
+    return StreamStartResponse(
+        status    = "started",
+        rtsp_url  = f"webcam://{request.device_id}",
+        camera_id = request.camera_id,
+        message   = "Webcam stream running in background. Poll GET /stream/webcam-status for results.",
+    )
+
+
+@app.post("/stream/stop-webcam", response_model=StreamStopResponse, tags=["Webcam Stream"])
+async def webcam_stop():
+    """Stop the running webcam background stream."""
+    state = _state(app)
+
+    if not state.webcam_streamer or not state.webcam_streamer.is_running:
+        return StreamStopResponse(
+            status  = "not_running",
+            message = "No webcam stream was running.",
+        )
+
+    await asyncio.get_event_loop().run_in_executor(None, state.webcam_streamer.stop)
+    state.webcam_streamer = None
+
+    return StreamStopResponse(
+        status  = "stopped",
+        message = "Webcam stream stopped successfully.",
+    )
+
+
+@app.get("/stream/webcam-status", response_model=StreamStatusResponse, tags=["Webcam Stream"])
+async def webcam_status():
+    """
+    Poll this endpoint to get the current webcam status and
+    the most recent detection result.
+    """
+    state = _state(app)
+
+    if not state.webcam_streamer:
+        return StreamStatusResponse(
+            streaming        = False,
+            frames_processed = 0,
+            clips_processed  = 0,
+            temporal_summary = {},
+        )
+
+    s = state.webcam_streamer.get_status()
+
+    last_fusion = None
+    if s["last_result"]:
+        last_fusion = FusionResult(**s["last_result"])
+
+    abnormal_frame_url = None
+    if s["abnormal_frame_ts"]:
+        abnormal_frame_url = f"/stream/webcam-abnormal-frame?ts={s['abnormal_frame_ts']}"
+
+    return StreamStatusResponse(
+        streaming           = s["streaming"],
+        rtsp_url            = f"webcam://{s['device_id']}",
+        camera_id           = s["camera_id"],
+        frames_processed    = s["frames_processed"],
+        clips_processed     = s["clips_processed"],
+        temporal_summary    = s["temporal_summary"],
+        last_result         = last_fusion,
+        last_alert_ts       = s["last_alert_ts"],
+        abnormal_frame_ts   = s["abnormal_frame_ts"],
+        abnormal_frame_url  = abnormal_frame_url,
+        error_message       = s["error_message"],
+    )
+
+
+@app.get("/stream/webcam-abnormal-frame", tags=["Webcam Stream"])
+async def webcam_abnormal_frame():
+    """
+    Return the frame from webcam that triggered abnormal activity detection.
+    """
+    state = _state(app)
+
+    if not state.webcam_streamer:
+        raise HTTPException(status_code=404, detail="No active webcam stream.")
+
+    abnormal_frame_jpeg = state.webcam_streamer.get_abnormal_frame()
+    if not abnormal_frame_jpeg:
+        raise HTTPException(status_code=404, detail="No abnormal activity frame captured from webcam yet.")
+
+    return Response(content=abnormal_frame_jpeg, media_type="image/jpeg")
 
 
 # ══════════════════════════════════════════════════════════════════
