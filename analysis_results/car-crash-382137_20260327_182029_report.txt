@@ -1,0 +1,16 @@
+================================================================================
+ABNORMAL SOUND DETECTION REPORT
+================================================================================
+
+Input File: C:\Users\Bimlendra\Downloads\New folder\car-crash-382137.mp3
+Analysis Time: 2026-03-27T18:20:29.504827
+Total Abnormal Detections: 1
+
+DETECTION DETAILS:
+--------------------------------------------------------------------------------
+
+Time: 6.0s - 8.0s
+  Sound: Glass breaking
+  Severity: MEDIUM
+  Confidence: 38.1%
+  Action: ALERT_GUARDS

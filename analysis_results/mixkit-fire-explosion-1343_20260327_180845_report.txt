@@ -1,0 +1,22 @@
+================================================================================
+ABNORMAL SOUND DETECTION REPORT
+================================================================================
+
+Input File: C:\Users\Bimlendra\Downloads\New folder\mixkit-fire-explosion-1343.wav
+Analysis Time: 2026-03-27T18:08:45.148809
+Total Abnormal Detections: 2
+
+DETECTION DETAILS:
+--------------------------------------------------------------------------------
+
+Time: 1.0s - 3.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 20.3%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 2.0s - 4.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 34.2%
+  Action: IMMEDIATE_RESPONSE

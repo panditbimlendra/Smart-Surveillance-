@@ -1,0 +1,77 @@
+{
+  "input_file": "C:\\Users\\Bimlendra\\Downloads\\New folder\\gun1.mp3",
+  "file_name": "gun1",
+  "analysis_time": "2026-03-27T18:13:08.370029",
+  "total_detections": 7,
+  "detections": [
+    {
+      "sound": "Gunshot",
+      "confidence": 0.40553733706474304,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 0.0,
+      "end_time": 2.0,
+      "timestamp": 0.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.48350462317466736,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 1.0,
+      "end_time": 3.0,
+      "timestamp": 1.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.4735105037689209,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 2.0,
+      "end_time": 4.0,
+      "timestamp": 2.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.516085684299469,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 3.0,
+      "end_time": 5.0,
+      "timestamp": 3.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.47021546959877014,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 4.0,
+      "end_time": 6.0,
+      "timestamp": 4.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.26572901010513306,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 5.0,
+      "end_time": 7.0,
+      "timestamp": 5.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.29079121351242065,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 7.0,
+      "end_time": 9.0,
+      "timestamp": 7.0
+    }
+  ],
+  "severity_summary": {
+    "CRITICAL": 7,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0
+  }
+}

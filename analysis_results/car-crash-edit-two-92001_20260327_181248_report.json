@@ -1,0 +1,23 @@
+{
+  "input_file": "C:\\Users\\Bimlendra\\Downloads\\New folder\\car-crash-edit-two-92001.mp3",
+  "file_name": "car-crash-edit-two-92001",
+  "analysis_time": "2026-03-27T18:12:48.114188",
+  "total_detections": 1,
+  "detections": [
+    {
+      "sound": "Tire squeal",
+      "confidence": 0.23485080897808075,
+      "severity": "MEDIUM",
+      "action": "INVESTIGATE",
+      "start_time": 4.0,
+      "end_time": 6.0,
+      "timestamp": 4.0
+    }
+  ],
+  "severity_summary": {
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 1,
+    "LOW": 0
+  }
+}

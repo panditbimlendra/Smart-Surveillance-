@@ -1,0 +1,50 @@
+{
+  "input_file": "C:\\Users\\Bimlendra\\Downloads\\New folder\\mixkit-fire-spell-with-explosion-1338.wav",
+  "file_name": "mixkit-fire-spell-with-explosion-1338",
+  "analysis_time": "2026-03-27T18:07:32.700025",
+  "total_detections": 4,
+  "detections": [
+    {
+      "sound": "Explosion",
+      "confidence": 0.22179068624973297,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 0.0,
+      "end_time": 2.0,
+      "timestamp": 0.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2995033264160156,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 1.0,
+      "end_time": 3.0,
+      "timestamp": 1.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.24982015788555145,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 2.0,
+      "end_time": 4.0,
+      "timestamp": 2.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2013704478740692,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 3.0,
+      "end_time": 5.0,
+      "timestamp": 3.0
+    }
+  ],
+  "severity_summary": {
+    "CRITICAL": 4,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0
+  }
+}

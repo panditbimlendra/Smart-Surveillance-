@@ -1,0 +1,815 @@
+{
+  "input_file": "C:\\Users\\Bimlendra\\Downloads\\New folder\\fire5.mp3",
+  "file_name": "fire5",
+  "analysis_time": "2026-03-27T18:19:54.869070",
+  "total_detections": 89,
+  "detections": [
+    {
+      "sound": "Explosion",
+      "confidence": 0.2058660238981247,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 6.0,
+      "end_time": 8.0,
+      "timestamp": 6.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.21951726078987122,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 7.0,
+      "end_time": 9.0,
+      "timestamp": 7.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.23579151928424835,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 8.0,
+      "end_time": 10.0,
+      "timestamp": 8.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2298118770122528,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 11.0,
+      "end_time": 13.0,
+      "timestamp": 11.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.24631375074386597,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 13.0,
+      "end_time": 15.0,
+      "timestamp": 13.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2687218487262726,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 14.0,
+      "end_time": 16.0,
+      "timestamp": 14.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.20043471455574036,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 18.0,
+      "end_time": 20.0,
+      "timestamp": 18.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.23270557820796967,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 19.0,
+      "end_time": 21.0,
+      "timestamp": 19.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.21960999071598053,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 23.0,
+      "end_time": 25.0,
+      "timestamp": 23.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.425428181886673,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 24.0,
+      "end_time": 26.0,
+      "timestamp": 24.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.4073769450187683,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 25.0,
+      "end_time": 27.0,
+      "timestamp": 25.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.27425089478492737,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 27.0,
+      "end_time": 29.0,
+      "timestamp": 27.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.21372024714946747,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 28.0,
+      "end_time": 30.0,
+      "timestamp": 28.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.34671923518180847,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 30.0,
+      "end_time": 32.0,
+      "timestamp": 30.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.33449220657348633,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 31.0,
+      "end_time": 33.0,
+      "timestamp": 31.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2663937509059906,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 34.0,
+      "end_time": 36.0,
+      "timestamp": 34.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.24072296917438507,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 36.0,
+      "end_time": 38.0,
+      "timestamp": 36.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.20573359727859497,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 37.0,
+      "end_time": 39.0,
+      "timestamp": 37.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.27912092208862305,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 38.0,
+      "end_time": 40.0,
+      "timestamp": 38.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.28499385714530945,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 39.0,
+      "end_time": 41.0,
+      "timestamp": 39.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.23139241337776184,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 40.0,
+      "end_time": 42.0,
+      "timestamp": 40.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.32958072423934937,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 41.0,
+      "end_time": 43.0,
+      "timestamp": 41.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.3695478141307831,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 42.0,
+      "end_time": 44.0,
+      "timestamp": 42.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.28440001606941223,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 44.0,
+      "end_time": 46.0,
+      "timestamp": 44.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.23184432089328766,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 45.0,
+      "end_time": 47.0,
+      "timestamp": 45.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.27507710456848145,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 46.0,
+      "end_time": 48.0,
+      "timestamp": 46.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.22693385183811188,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 47.0,
+      "end_time": 49.0,
+      "timestamp": 47.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2720794975757599,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 48.0,
+      "end_time": 50.0,
+      "timestamp": 48.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.27862146496772766,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 49.0,
+      "end_time": 51.0,
+      "timestamp": 49.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.22153422236442566,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 50.0,
+      "end_time": 52.0,
+      "timestamp": 50.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2256753146648407,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 52.0,
+      "end_time": 54.0,
+      "timestamp": 52.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.20107658207416534,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 53.0,
+      "end_time": 55.0,
+      "timestamp": 53.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2006780058145523,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 55.0,
+      "end_time": 57.0,
+      "timestamp": 55.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.20765875279903412,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 57.0,
+      "end_time": 59.0,
+      "timestamp": 57.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2545377314090729,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 58.0,
+      "end_time": 60.0,
+      "timestamp": 58.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2133011370897293,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 59.0,
+      "end_time": 61.0,
+      "timestamp": 59.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.25458329916000366,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 60.0,
+      "end_time": 62.0,
+      "timestamp": 60.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.22133001685142517,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 62.0,
+      "end_time": 64.0,
+      "timestamp": 62.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.23606663942337036,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 65.0,
+      "end_time": 67.0,
+      "timestamp": 65.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.235487699508667,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 68.0,
+      "end_time": 70.0,
+      "timestamp": 68.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.31968769431114197,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 69.0,
+      "end_time": 71.0,
+      "timestamp": 69.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.221592515707016,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 70.0,
+      "end_time": 72.0,
+      "timestamp": 70.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.22380569577217102,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 71.0,
+      "end_time": 73.0,
+      "timestamp": 71.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.20957624912261963,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 73.0,
+      "end_time": 75.0,
+      "timestamp": 73.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2652203440666199,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 75.0,
+      "end_time": 77.0,
+      "timestamp": 75.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.22816240787506104,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 76.0,
+      "end_time": 78.0,
+      "timestamp": 76.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.3565545678138733,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 77.0,
+      "end_time": 79.0,
+      "timestamp": 77.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.40667015314102173,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 78.0,
+      "end_time": 80.0,
+      "timestamp": 78.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.29066237807273865,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 79.0,
+      "end_time": 81.0,
+      "timestamp": 79.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2688770592212677,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 80.0,
+      "end_time": 82.0,
+      "timestamp": 80.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.24459156394004822,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 83.0,
+      "end_time": 85.0,
+      "timestamp": 83.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.24851568043231964,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 84.0,
+      "end_time": 86.0,
+      "timestamp": 84.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2193581610918045,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 86.0,
+      "end_time": 88.0,
+      "timestamp": 86.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.20957396924495697,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 91.0,
+      "end_time": 93.0,
+      "timestamp": 91.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.20701970160007477,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 92.0,
+      "end_time": 94.0,
+      "timestamp": 92.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.27341708540916443,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 96.0,
+      "end_time": 98.0,
+      "timestamp": 96.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2761860191822052,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 97.0,
+      "end_time": 99.0,
+      "timestamp": 97.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.23878981173038483,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 98.0,
+      "end_time": 100.0,
+      "timestamp": 98.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2401413470506668,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 102.0,
+      "end_time": 104.0,
+      "timestamp": 102.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.21969792246818542,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 106.0,
+      "end_time": 108.0,
+      "timestamp": 106.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.23260781168937683,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 107.0,
+      "end_time": 109.0,
+      "timestamp": 107.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2782443165779114,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 108.0,
+      "end_time": 110.0,
+      "timestamp": 108.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.24189814925193787,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 109.0,
+      "end_time": 111.0,
+      "timestamp": 109.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.3238447308540344,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 110.0,
+      "end_time": 112.0,
+      "timestamp": 110.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.28566786646842957,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 111.0,
+      "end_time": 113.0,
+      "timestamp": 111.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2408321350812912,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 112.0,
+      "end_time": 114.0,
+      "timestamp": 112.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.24620217084884644,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 113.0,
+      "end_time": 115.0,
+      "timestamp": 113.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.3002995252609253,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 116.0,
+      "end_time": 118.0,
+      "timestamp": 116.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.3299098014831543,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 117.0,
+      "end_time": 119.0,
+      "timestamp": 117.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2866014838218689,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 119.0,
+      "end_time": 121.0,
+      "timestamp": 119.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2065737545490265,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 120.0,
+      "end_time": 122.0,
+      "timestamp": 120.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.22024035453796387,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 121.0,
+      "end_time": 123.0,
+      "timestamp": 121.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2582774758338928,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 124.0,
+      "end_time": 126.0,
+      "timestamp": 124.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.33508890867233276,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 127.0,
+      "end_time": 129.0,
+      "timestamp": 127.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.26490601897239685,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 128.0,
+      "end_time": 130.0,
+      "timestamp": 128.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.21547701954841614,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 129.0,
+      "end_time": 131.0,
+      "timestamp": 129.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.30321699380874634,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 130.0,
+      "end_time": 132.0,
+      "timestamp": 130.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.21607951819896698,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 131.0,
+      "end_time": 133.0,
+      "timestamp": 131.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.20526039600372314,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 132.0,
+      "end_time": 134.0,
+      "timestamp": 132.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.23394836485385895,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 135.0,
+      "end_time": 137.0,
+      "timestamp": 135.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2231433242559433,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 137.0,
+      "end_time": 139.0,
+      "timestamp": 137.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.323179692029953,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 138.0,
+      "end_time": 140.0,
+      "timestamp": 138.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2329036146402359,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 139.0,
+      "end_time": 141.0,
+      "timestamp": 139.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.3524315059185028,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 140.0,
+      "end_time": 142.0,
+      "timestamp": 140.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.20800527930259705,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 141.0,
+      "end_time": 143.0,
+      "timestamp": 141.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.42343711853027344,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 143.0,
+      "end_time": 145.0,
+      "timestamp": 143.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.349079430103302,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 144.0,
+      "end_time": 146.0,
+      "timestamp": 144.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2870359420776367,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 145.0,
+      "end_time": 147.0,
+      "timestamp": 145.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.2435837686061859,
+      "severity": "HIGH",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 146.0,
+      "end_time": 148.0,
+      "timestamp": 146.0
+    }
+  ],
+  "severity_summary": {
+    "CRITICAL": 0,
+    "HIGH": 89,
+    "MEDIUM": 0,
+    "LOW": 0
+  }
+}

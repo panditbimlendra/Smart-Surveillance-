@@ -1,0 +1,34 @@
+================================================================================
+ABNORMAL SOUND DETECTION REPORT
+================================================================================
+
+Input File: C:\Users\Bimlendra\Downloads\New folder\mixkit-fire-spell-with-explosion-1338.wav
+Analysis Time: 2026-03-27T18:07:32.700025
+Total Abnormal Detections: 4
+
+DETECTION DETAILS:
+--------------------------------------------------------------------------------
+
+Time: 0.0s - 2.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.2%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 1.0s - 3.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 30.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 2.0s - 4.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 25.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 3.0s - 5.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 20.1%
+  Action: IMMEDIATE_RESPONSE

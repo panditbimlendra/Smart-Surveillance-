@@ -1,0 +1,88 @@
+# SafeZone Email Alert Setup — Quick Start
+
+## What You Need (5 minutes)
+
+### For Email Alerts 📧
+1. Gmail account
+2. 2-Step Verification enabled on Gmail
+3. One 16-character App Password from Google
+
+---
+
+## Setup Steps
+
+### Step 1: Gmail Setup (3 minutes)
+```
+1. Login to myaccount.google.com
+2. Go to Security
+3. Enable 2-Step Verification (if needed)
+4. Go to apppasswords
+5. Create app password for Mail
+6. Copy the 16-character password
+```
+
+### Step 2: Update .env File (1 minute)
+**Location:** `c:\Users\Bimlendra\Desktop\safezone_prod\.env`
+
+```env
+# Gmail
+EMAIL_ENABLED=true
+EMAIL_FROM=panditbimlendra10@gmail.com
+EMAIL_USERNAME=panditbimlendra10@gmail.com  # optional: SMTP login username if different from FROM address
+EMAIL_PASSWORD=your_gmail_app_password_here  # Gmail app password for panditbimendra10@gmail.com
+ALERT_EMAIL=panditbimlendra@gmail.com
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USE_SSL=false
+EMAIL_USE_TLS=true
+
+ALERT_COOLDOWN=30
+```
+
+---
+
+## Test It
+
+1. **Start SafeZone:**
+   ```bash
+   cd safezone_prod
+   python -m uvicorn backend.main:app --reload
+   ```
+
+2. **Trigger Alert:**
+   - Move in front of camera
+   - Wait for abnormal activity detection
+   - Check your email inbox for the alert
+
+3. **Check Logs:**
+   - Backend console shows: `Email sent to panditbimlendra@gmail.com`
+
+---
+
+## Alert Levels
+
+- **WARNING** → Email
+- **DANGER** → Email
+
+---
+
+## Common Issues
+
+| Issue | Fix |
+|-------|-----|
+| Email not sending | Use **App Password**, not regular password + check 2-Step Verification. If Gmail returns 535, verify `EMAIL_USERNAME` and the app password match the sender account. |
+| No alerts firing | Verify `EMAIL_ENABLED=true` and `ALERT_EMAIL` in `.env` |
+| No RTSP connection | Check `CCTV_RTSP_URL` in `.env` |
+
+---
+
+## Files Modified
+
+✅ `alerts.py` — email-only alert flow
+✅ `config.py` — email alert config
+✅ `.env` — email credentials
+✅ `requirements.txt` — removed Twilio dependency
+
+---
+
+For detailed setup → see **ALERTS_SETUP.md**

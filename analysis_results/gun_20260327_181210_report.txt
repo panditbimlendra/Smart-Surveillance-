@@ -1,0 +1,40 @@
+================================================================================
+ABNORMAL SOUND DETECTION REPORT
+================================================================================
+
+Input File: C:\Users\Bimlendra\Downloads\New folder\gun.mp3
+Analysis Time: 2026-03-27T18:12:10.003920
+Total Abnormal Detections: 5
+
+DETECTION DETAILS:
+--------------------------------------------------------------------------------
+
+Time: 0.0s - 2.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 51.9%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 1.0s - 3.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 43.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 3.0s - 5.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 50.7%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 4.0s - 6.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 55.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 5.0s - 7.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 33.9%
+  Action: IMMEDIATE_RESPONSE

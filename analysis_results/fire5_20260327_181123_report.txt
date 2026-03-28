@@ -1,0 +1,544 @@
+================================================================================
+ABNORMAL SOUND DETECTION REPORT
+================================================================================
+
+Input File: C:\Users\Bimlendra\Downloads\New folder\fire5.mp3
+Analysis Time: 2026-03-27T18:11:23.696481
+Total Abnormal Detections: 89
+
+DETECTION DETAILS:
+--------------------------------------------------------------------------------
+
+Time: 6.0s - 8.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 20.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 7.0s - 9.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 8.0s - 10.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 11.0s - 13.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 13.0s - 15.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 24.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 14.0s - 16.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 26.9%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 18.0s - 20.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 20.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 19.0s - 21.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.3%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 23.0s - 25.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 24.0s - 26.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 42.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 25.0s - 27.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 40.7%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 27.0s - 29.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 27.4%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 28.0s - 30.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 21.4%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 30.0s - 32.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 34.7%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 31.0s - 33.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 33.4%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 34.0s - 36.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 26.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 36.0s - 38.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 24.1%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 37.0s - 39.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 20.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 38.0s - 40.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 27.9%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 39.0s - 41.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 28.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 40.0s - 42.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.1%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 41.0s - 43.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 33.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 42.0s - 44.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 37.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 44.0s - 46.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 28.4%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 45.0s - 47.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.2%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 46.0s - 48.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 27.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 47.0s - 49.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.7%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 48.0s - 50.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 27.2%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 49.0s - 51.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 27.9%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 50.0s - 52.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.2%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 52.0s - 54.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 53.0s - 55.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 20.1%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 55.0s - 57.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 20.1%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 57.0s - 59.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 20.8%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 58.0s - 60.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 25.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 59.0s - 61.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 21.3%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 60.0s - 62.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 25.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 62.0s - 64.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.1%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 65.0s - 67.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 68.0s - 70.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 69.0s - 71.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 32.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 70.0s - 72.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.2%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 71.0s - 73.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.4%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 73.0s - 75.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 21.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 75.0s - 77.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 26.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 76.0s - 78.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.8%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 77.0s - 79.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 35.7%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 78.0s - 80.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 40.7%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 79.0s - 81.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 29.1%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 80.0s - 82.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 26.9%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 83.0s - 85.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 24.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 84.0s - 86.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 24.9%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 86.0s - 88.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 21.9%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 91.0s - 93.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 21.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 92.0s - 94.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 20.7%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 96.0s - 98.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 27.3%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 97.0s - 99.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 27.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 98.0s - 100.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.9%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 102.0s - 104.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 24.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 106.0s - 108.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 107.0s - 109.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.3%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 108.0s - 110.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 27.8%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 109.0s - 111.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 24.2%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 110.0s - 112.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 32.4%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 111.0s - 113.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 28.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 112.0s - 114.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 24.1%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 113.0s - 115.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 24.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 116.0s - 118.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 30.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 117.0s - 119.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 33.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 119.0s - 121.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 28.7%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 120.0s - 122.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 20.7%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 121.0s - 123.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 124.0s - 126.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 25.8%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 127.0s - 129.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 33.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 128.0s - 130.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 26.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 129.0s - 131.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 21.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 130.0s - 132.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 30.3%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 131.0s - 133.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 21.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 132.0s - 134.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 20.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 135.0s - 137.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.4%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 137.0s - 139.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.3%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 138.0s - 140.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 32.3%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 139.0s - 141.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.3%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 140.0s - 142.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 35.2%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 141.0s - 143.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 20.8%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 143.0s - 145.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 42.3%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 144.0s - 146.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 34.9%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 145.0s - 147.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 28.7%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 146.0s - 148.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 24.4%
+  Action: IMMEDIATE_RESPONSE

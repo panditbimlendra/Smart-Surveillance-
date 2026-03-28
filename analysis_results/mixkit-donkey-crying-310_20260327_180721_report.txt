@@ -1,0 +1,16 @@
+================================================================================
+ABNORMAL SOUND DETECTION REPORT
+================================================================================
+
+Input File: C:\Users\Bimlendra\Downloads\New folder\mixkit-donkey-crying-310.wav
+Analysis Time: 2026-03-27T18:07:21.177796
+Total Abnormal Detections: 1
+
+DETECTION DETAILS:
+--------------------------------------------------------------------------------
+
+Time: 2.0s - 4.0s
+  Sound: Dog bark
+  Severity: MEDIUM
+  Confidence: 23.9%
+  Action: INVESTIGATE

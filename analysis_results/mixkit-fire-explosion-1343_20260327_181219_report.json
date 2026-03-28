@@ -1,0 +1,32 @@
+{
+  "input_file": "C:\\Users\\Bimlendra\\Downloads\\New folder\\mixkit-fire-explosion-1343.wav",
+  "file_name": "mixkit-fire-explosion-1343",
+  "analysis_time": "2026-03-27T18:12:19.151372",
+  "total_detections": 2,
+  "detections": [
+    {
+      "sound": "Explosion",
+      "confidence": 0.20347478985786438,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 1.0,
+      "end_time": 3.0,
+      "timestamp": 1.0
+    },
+    {
+      "sound": "Explosion",
+      "confidence": 0.34179165959358215,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 2.0,
+      "end_time": 4.0,
+      "timestamp": 2.0
+    }
+  ],
+  "severity_summary": {
+    "CRITICAL": 2,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0
+  }
+}

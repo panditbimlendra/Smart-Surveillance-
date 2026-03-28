@@ -1,0 +1,23 @@
+{
+  "input_file": "C:\\Users\\Bimlendra\\Downloads\\New folder\\gun3.mp3",
+  "file_name": "gun3",
+  "analysis_time": "2026-03-27T18:12:59.257628",
+  "total_detections": 1,
+  "detections": [
+    {
+      "sound": "Gunshot",
+      "confidence": 0.6157165765762329,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 0.0,
+      "end_time": 2.0,
+      "timestamp": 0.0
+    }
+  ],
+  "severity_summary": {
+    "CRITICAL": 1,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0
+  }
+}

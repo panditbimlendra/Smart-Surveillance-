@@ -1,0 +1,41 @@
+{
+  "input_file": "C:\\Users\\Bimlendra\\Downloads\\New folder\\creepy-synthetic-car-accident-30751.mp3",
+  "file_name": "creepy-synthetic-car-accident-30751",
+  "analysis_time": "2026-03-27T18:10:06.271143",
+  "total_detections": 3,
+  "detections": [
+    {
+      "sound": "Siren",
+      "confidence": 0.24076662957668304,
+      "severity": "HIGH",
+      "action": "ALERT_AUTHORITIES",
+      "start_time": 1.0,
+      "end_time": 3.0,
+      "timestamp": 1.0
+    },
+    {
+      "sound": "Siren",
+      "confidence": 0.5344510078430176,
+      "severity": "HIGH",
+      "action": "ALERT_AUTHORITIES",
+      "start_time": 2.0,
+      "end_time": 4.0,
+      "timestamp": 2.0
+    },
+    {
+      "sound": "Siren",
+      "confidence": 0.5474985837936401,
+      "severity": "HIGH",
+      "action": "ALERT_AUTHORITIES",
+      "start_time": 3.0,
+      "end_time": 5.0,
+      "timestamp": 3.0
+    }
+  ],
+  "severity_summary": {
+    "CRITICAL": 0,
+    "HIGH": 3,
+    "MEDIUM": 0,
+    "LOW": 0
+  }
+}

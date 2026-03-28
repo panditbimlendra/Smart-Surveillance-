@@ -1,0 +1,28 @@
+================================================================================
+ABNORMAL SOUND DETECTION REPORT
+================================================================================
+
+Input File: C:\Users\Bimlendra\Downloads\New folder\creepy-synthetic-car-accident-30751.mp3
+Analysis Time: 2026-03-27T18:13:26.293389
+Total Abnormal Detections: 3
+
+DETECTION DETAILS:
+--------------------------------------------------------------------------------
+
+Time: 1.0s - 3.0s
+  Sound: Siren
+  Severity: HIGH
+  Confidence: 24.1%
+  Action: ALERT_AUTHORITIES
+
+Time: 2.0s - 4.0s
+  Sound: Siren
+  Severity: HIGH
+  Confidence: 53.4%
+  Action: ALERT_AUTHORITIES
+
+Time: 3.0s - 5.0s
+  Sound: Siren
+  Severity: HIGH
+  Confidence: 54.7%
+  Action: ALERT_AUTHORITIES

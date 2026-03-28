@@ -1,0 +1,32 @@
+{
+  "input_file": "C:\\Users\\Bimlendra\\Downloads\\New folder\\gun2 (2).mp3",
+  "file_name": "gun2 (2)",
+  "analysis_time": "2026-03-27T18:13:16.952731",
+  "total_detections": 2,
+  "detections": [
+    {
+      "sound": "Gunshot",
+      "confidence": 0.6453845500946045,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 0.0,
+      "end_time": 2.0,
+      "timestamp": 0.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.5330404043197632,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 1.0,
+      "end_time": 3.0,
+      "timestamp": 1.0
+    }
+  ],
+  "severity_summary": {
+    "CRITICAL": 2,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0
+  }
+}

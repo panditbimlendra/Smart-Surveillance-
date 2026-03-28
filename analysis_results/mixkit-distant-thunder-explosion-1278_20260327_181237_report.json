@@ -1,0 +1,23 @@
+{
+  "input_file": "C:\\Users\\Bimlendra\\Downloads\\New folder\\mixkit-distant-thunder-explosion-1278.wav",
+  "file_name": "mixkit-distant-thunder-explosion-1278",
+  "analysis_time": "2026-03-27T18:12:37.623986",
+  "total_detections": 1,
+  "detections": [
+    {
+      "sound": "Explosion",
+      "confidence": 0.2697705626487732,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 0.0,
+      "end_time": 2.0,
+      "timestamp": 0.0
+    }
+  ],
+  "severity_summary": {
+    "CRITICAL": 1,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0
+  }
+}

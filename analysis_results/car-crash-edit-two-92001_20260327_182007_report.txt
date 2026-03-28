@@ -1,0 +1,16 @@
+================================================================================
+ABNORMAL SOUND DETECTION REPORT
+================================================================================
+
+Input File: C:\Users\Bimlendra\Downloads\New folder\car-crash-edit-two-92001.mp3
+Analysis Time: 2026-03-27T18:20:07.315873
+Total Abnormal Detections: 1
+
+DETECTION DETAILS:
+--------------------------------------------------------------------------------
+
+Time: 4.0s - 6.0s
+  Sound: Tire squeal
+  Severity: MEDIUM
+  Confidence: 23.5%
+  Action: INVESTIGATE

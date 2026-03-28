@@ -1,0 +1,124 @@
+================================================================================
+ABNORMAL SOUND DETECTION REPORT
+================================================================================
+
+Input File: C:\Users\Bimlendra\Downloads\New folder\gun2.mp3
+Analysis Time: 2026-03-27T18:11:55.796228
+Total Abnormal Detections: 19
+
+DETECTION DETAILS:
+--------------------------------------------------------------------------------
+
+Time: 2.0s - 4.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 26.2%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 3.0s - 5.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 55.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 4.0s - 6.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 35.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 5.0s - 7.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 20.8%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 7.0s - 9.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 44.2%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 8.0s - 10.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 30.1%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 9.0s - 11.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 28.9%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 11.0s - 13.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 22.2%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 12.0s - 14.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 24.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 16.0s - 18.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 46.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 17.0s - 19.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 43.3%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 18.0s - 20.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 41.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 19.0s - 21.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 21.1%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 21.0s - 23.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 21.4%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 25.0s - 27.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 34.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 31.0s - 33.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 25.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 40.0s - 42.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 57.0%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 41.0s - 43.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 43.5%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 53.0s - 55.0s
+  Sound: Gunshot
+  Severity: CRITICAL
+  Confidence: 44.6%
+  Action: IMMEDIATE_RESPONSE

@@ -1,0 +1,52 @@
+================================================================================
+ABNORMAL SOUND DETECTION REPORT
+================================================================================
+
+Input File: C:\Users\Bimlendra\Downloads\New folder\mixkit-intense-long-fire-beam-1341.wav
+Analysis Time: 2026-03-27T18:06:20.032833
+Total Abnormal Detections: 7
+
+DETECTION DETAILS:
+--------------------------------------------------------------------------------
+
+Time: 0.0s - 2.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 28.4%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 1.0s - 3.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.9%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 2.0s - 4.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 22.4%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 3.0s - 5.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 33.8%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 4.0s - 6.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 21.9%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 5.0s - 7.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 26.6%
+  Action: IMMEDIATE_RESPONSE
+
+Time: 6.0s - 8.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 31.6%
+  Action: IMMEDIATE_RESPONSE

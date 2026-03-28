@@ -1,0 +1,16 @@
+================================================================================
+ABNORMAL SOUND DETECTION REPORT
+================================================================================
+
+Input File: C:\Users\Bimlendra\Downloads\New folder\mixkit-distant-thunder-explosion-1278.wav
+Analysis Time: 2026-03-27T18:09:09.952616
+Total Abnormal Detections: 1
+
+DETECTION DETAILS:
+--------------------------------------------------------------------------------
+
+Time: 0.0s - 2.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 27.0%
+  Action: IMMEDIATE_RESPONSE

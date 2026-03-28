@@ -1,0 +1,16 @@
+================================================================================
+ABNORMAL SOUND DETECTION REPORT
+================================================================================
+
+Input File: C:\Users\Bimlendra\Downloads\New folder\mixkit-truck-crash-with-explosion-1616.wav
+Analysis Time: 2026-03-27T18:08:58.339623
+Total Abnormal Detections: 1
+
+DETECTION DETAILS:
+--------------------------------------------------------------------------------
+
+Time: 1.0s - 3.0s
+  Sound: Explosion
+  Severity: CRITICAL
+  Confidence: 23.3%
+  Action: IMMEDIATE_RESPONSE

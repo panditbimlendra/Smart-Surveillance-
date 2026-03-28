@@ -1,0 +1,185 @@
+{
+  "input_file": "C:\\Users\\Bimlendra\\Downloads\\New folder\\gun2.mp3",
+  "file_name": "gun2",
+  "analysis_time": "2026-03-27T18:11:55.796228",
+  "total_detections": 19,
+  "detections": [
+    {
+      "sound": "Gunshot",
+      "confidence": 0.2621648609638214,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 2.0,
+      "end_time": 4.0,
+      "timestamp": 2.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.5500097274780273,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 3.0,
+      "end_time": 5.0,
+      "timestamp": 3.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.34970417618751526,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 4.0,
+      "end_time": 6.0,
+      "timestamp": 4.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.20769363641738892,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 5.0,
+      "end_time": 7.0,
+      "timestamp": 5.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.442020058631897,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 7.0,
+      "end_time": 9.0,
+      "timestamp": 7.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.3009280264377594,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 8.0,
+      "end_time": 10.0,
+      "timestamp": 8.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.2888137400150299,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 9.0,
+      "end_time": 11.0,
+      "timestamp": 9.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.22160972654819489,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 11.0,
+      "end_time": 13.0,
+      "timestamp": 11.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.2404583841562271,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 12.0,
+      "end_time": 14.0,
+      "timestamp": 12.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.46624472737312317,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 16.0,
+      "end_time": 18.0,
+      "timestamp": 16.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.4333926737308502,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 17.0,
+      "end_time": 19.0,
+      "timestamp": 17.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.4100939631462097,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 18.0,
+      "end_time": 20.0,
+      "timestamp": 18.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.21088427305221558,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 19.0,
+      "end_time": 21.0,
+      "timestamp": 19.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.21358288824558258,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 21.0,
+      "end_time": 23.0,
+      "timestamp": 21.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.3461972177028656,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 25.0,
+      "end_time": 27.0,
+      "timestamp": 25.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.2552884519100189,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 31.0,
+      "end_time": 33.0,
+      "timestamp": 31.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.5704882740974426,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 40.0,
+      "end_time": 42.0,
+      "timestamp": 40.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.4345571994781494,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 41.0,
+      "end_time": 43.0,
+      "timestamp": 41.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.4459660053253174,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 53.0,
+      "end_time": 55.0,
+      "timestamp": 53.0
+    }
+  ],
+  "severity_summary": {
+    "CRITICAL": 19,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0
+  }
+}

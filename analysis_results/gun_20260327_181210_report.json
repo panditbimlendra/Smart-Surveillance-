@@ -1,0 +1,59 @@
+{
+  "input_file": "C:\\Users\\Bimlendra\\Downloads\\New folder\\gun.mp3",
+  "file_name": "gun",
+  "analysis_time": "2026-03-27T18:12:10.003920",
+  "total_detections": 5,
+  "detections": [
+    {
+      "sound": "Gunshot",
+      "confidence": 0.5192911624908447,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 0.0,
+      "end_time": 2.0,
+      "timestamp": 0.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.4345489740371704,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 1.0,
+      "end_time": 3.0,
+      "timestamp": 1.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.5066773891448975,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 3.0,
+      "end_time": 5.0,
+      "timestamp": 3.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.5556734204292297,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 4.0,
+      "end_time": 6.0,
+      "timestamp": 4.0
+    },
+    {
+      "sound": "Gunshot",
+      "confidence": 0.3390730321407318,
+      "severity": "CRITICAL",
+      "action": "IMMEDIATE_RESPONSE",
+      "start_time": 5.0,
+      "end_time": 7.0,
+      "timestamp": 5.0
+    }
+  ],
+  "severity_summary": {
+    "CRITICAL": 5,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0
+  }
+}

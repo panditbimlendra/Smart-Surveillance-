@@ -1,0 +1,23 @@
+{
+  "input_file": "C:\\Users\\Bimlendra\\Downloads\\New folder\\kid-screaming-329317.mp3",
+  "file_name": "kid-screaming-329317",
+  "analysis_time": "2026-03-27T18:20:20.018851",
+  "total_detections": 1,
+  "detections": [
+    {
+      "sound": "Scream",
+      "confidence": 0.24074813723564148,
+      "severity": "MEDIUM",
+      "action": "ALERT_GUARDS",
+      "start_time": 0.0,
+      "end_time": 2.0,
+      "timestamp": 0.0
+    }
+  ],
+  "severity_summary": {
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 1,
+    "LOW": 0
+  }
+}
